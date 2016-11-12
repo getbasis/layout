@@ -38,14 +38,21 @@ html.{bs-prefix}disable-window-scroll {
 }
 
 .{bs-prefix}l-header {
-  &--overlay, &--sticky {
+  &--overlay {
     position: fixed;
     right: 0;
     left: 0;
     z-index: 1;
   }
 
-  &--is-scrolled {
+  &[data-bs-header-sticky="true"][data-bs-header-scrolled="true"] {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  &[data-bs-header-scrolled="true"] {
     // Used js
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "getbasis-layout",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "author": "inc2734",
   "license": "MIT",
   "repository": {
@@ -8,6 +8,6 @@
     "url": "https://github.com/getbasis/layout"
   },
   "dependencies": {
-    "jquery": "^3.1.0"
+    "jquery": "^3.1.1"
   }
 }

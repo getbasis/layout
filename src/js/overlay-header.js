@@ -1,6 +1,5 @@
 /**
  * This is for the overlay header.
- * If scroll the page, added a class "is-scrolled".
  */
 
 'use strict';
@@ -12,16 +11,15 @@ export default class BasisOverlayHeader {
     this.params = $.extend({
       container   : '._l-container',
       header      : '._l-header',
-      stickyClass : '_l-header--sticky',
-      overlayClass: '_l-header--overlay',
-      scrollClass : '_l-header--is-scrolled'
+      sticky      : 'data-bs-header-sticky',
+      scrolled    : 'data-bs-header-scrolled'
     }, params);
     this.container = $(this.params.container);
     this.header    = $(this.params.header);
     this.isDisableWindowScroll = $('html').hasClass('_disable-window-scroll');
 
-    this.setClassForScroll();
-    this.setClassForSticky();
+    this.setScroll();
+    this.setSticky();
     this.setListener();
   }
 
@@ -29,25 +27,33 @@ export default class BasisOverlayHeader {
     const target = this.getScrollTarget();
 
     target.on('scroll resize', (event) => {
-      this.setClassForScroll();
-      this.setClassForSticky();
+      this.setScroll();
+      this.setSticky();
     });
   }
 
-  setClassForScroll() {
+  setScroll() {
     const scroll = this.getScrollTop();
 
     if (scroll > 0) {
-      this.header.addClass(this.params.scrollClass);
+      this.header.attr(this.params.scrolled, 'true');
     } else {
-      this.header.removeClass(this.params.scrollClass);
+      this.header.attr(this.params.scrolled, 'false');
     }
   }
 
-  setClassForSticky() {
-    if (this.header.hasClass(this.params.stickyClass)) {
-      const headerHeight = this.header.outerHeight();
+  setSticky() {
+    const scroll = this.getScrollTop();
+
+    if ('true' !== this.header.attr(this.params.sticky)) {
+      return;
+    }
+
+    const headerHeight = this.header.outerHeight();
+    if (scroll > 0) {
       this.header.next().css('paddingTop', headerHeight + 'px');
+    } else {
+      this.header.next().css('paddingTop', '');
     }
   }
 
