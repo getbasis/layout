@@ -7,14 +7,10 @@
 import $ from 'jquery';
 
 export default class BasisFixedHeader {
-  constructor(params) {
-    this.params = $.extend({
-      container: '._l-container',
-      header   : '._l-header'
-    }, params);
-    this.container = $(this.params.container)
-    this.header    = $(this.params.header);
-    this.isDisableWindowScroll = $('html').hasClass('_disable-window-scroll');
+  constructor() {
+    this.container = $('[data-bs-layout="container"]');
+    this.header    = $('[data-bs-layout="header"]');
+    this.isDisableWindowScroll = ('true' == $('html').attr('data-bs-disable-window-scroll'));
 
     if (this.shouldSetHeaderWidth()) {
       this.setHeaderWidth();
