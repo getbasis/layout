@@ -52,7 +52,7 @@ export default class BasisStickyHeader {
   }
 
   getScrollTarget() {
-    if (! this.windowScroll) {
+    if ('false' == this.windowScroll) {
       return this.container;
     } else {
       return $(window);

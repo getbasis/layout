@@ -23,7 +23,7 @@ export default class BasisFixedHeader {
 
   shouldSetHeaderWidth() {
     const position = this.header.css('position');
-    if ('fixed' === position && ! this.windowScroll) {
+    if ('fixed' === position && 'false' == this.windowScroll) {
       return true;
     }
     return false;
