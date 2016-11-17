@@ -8,10 +8,10 @@ import $ from 'jquery';
 
 export default class BasisStickyHeader {
   constructor() {
-    this.container = $('[data-bs-layout="container"]');
-    this.header    = $('[data-bs-layout="header"]');
-    this.contents  = $('[data-bs-layout="contents"]');
-    this.isDisableWindowScroll = $('html').hasClass('_disable-window-scroll');
+    this.container = $('[data-l="container"]');
+    this.header    = $('[data-l="header"]');
+    this.contents  = $('[data-l="contents"]');
+    this.windowScroll = $('html').attr('data-window-scroll');
 
     this.setScroll();
     this.setSticky();
@@ -29,31 +29,30 @@ export default class BasisStickyHeader {
 
   setScroll() {
     const scroll = this.getScrollTop();
-    let scrolled = 'false';
 
     if (scroll > 0) {
-      scrolled = 'true';
+      $('html').attr('data-scrolled', 'true');
+    } else {
+      $('html').attr('data-scrolled', 'false');
     }
-    this.header.attr('data-bs-header-scrolled', scrolled);
   }
 
   setSticky() {
-    if ('sticky' !== this.header.attr('data-bs-header-layout')) {
+    if ('sticky' !== this.header.attr('data-l-header-type')) {
       return;
     }
 
     const scroll = this.getScrollTop();
-    let paddingTop = '';
-
     if (scroll > 0) {
       const headerHeight = this.header.outerHeight();
-      paddingTop = `${headerHeight}px`;
+      this.contents.css('paddingTop', `${headerHeight}px`);
+    } else {
+      this.contents.css('paddingTop', '');
     }
-    this.contents.css('paddingTop', paddingTop);
   }
 
   getScrollTarget() {
-    if (this.isDisableWindowScroll) {
+    if (! this.windowScroll) {
       return this.container;
     } else {
       return $(window);

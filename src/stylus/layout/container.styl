@@ -1,94 +1,38 @@
-[data-bs-container-layout="sticky-footer"],
-html[data-bs-disable-window-scroll="true"] {
-  > [data-bs-layout="header"],
-  > [data-bs-layout="footer"] {
+html[data-sticky-footer="true"] [data-l="container"],
+html[data-window-scroll="false"] {
+  > [data-l="header"],
+  > [data-l="footer"] {
     flex: none;
   }
 }
 
-//
-// <div class="_l-container" data-bs-layout="container">
-//     <header class="_l-header" role="banner" data-bs-layout="header">
-//         ...
-//     </header>
-//     <div class="_l-contents">
-//         <main class="_l-main" role="main">
-//             ...
-//         </main>
-//         <aside class="_l-sidebar" role="complementary">
-//             ...
-//         </aside>
-//     </div>
-//     <footer class="_l-footer" role="content-info" data-bs-layout="footer">
-//         ...
-//     </footer>
-// </div>
-//
-
-[data-bs-container-layout="sticky-footer"] {
+html[data-sticky-footer="true"] [data-l="container"] {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 
-  > [data-bs-layout="contents"] {
+  > [data-l="contents"] {
     flex: 1 0 auto;
   }
 }
 
-[data-bs-header-layout="overlay"] {
+[data-l-header-type="overlay"],
+html[data-scrolled="true"] [data-l-header-type="sticky"] {
   position: fixed;
   right: 0;
   left: 0;
   z-index: 1;
 }
 
-[data-bs-header-layout="sticky"][data-bs-header-scrolled="true"] {
-  position: fixed;
-  right: 0;
-  left: 0;
-  z-index: 1;
-}
-
-[data-bs-header-scrolled="true"] {
-  // Used js
-}
-
-//
-// If you want to fixed header with [data-bs-disable-window-scroll="true"]
-//
-// <header class="_l-header" role="banner" data-bs-layout="header">
-//     ...
-// </header>
-// <div class="_l-container" data-bs-layout="container">
-//     ...
-// </div>
-//
-//
-// If you want to fixed footer
-//
-// <div class="_l-container" data-bs-layout="container">
-//     ...
-// </div>
-// <footer class="_l-footer" role="content-info" data-bs-layout="footer">
-//     ...
-// </footer>
-//
-
-html[data-bs-disable-window-scroll="true"] {
+html[data-window-scroll="false"] {
   &, body {
     overflow: hidden;
-    height: 100%;
   }
 
-  body {
-    display: flex;
-    flex-direction: column;
-  }
-
-  [data-bs-layout="container"] {
+  [data-l="container"] {
     display: block;
     overflow-y: auto;
-    height: 100%;
+    height: 100vh;
     min-height: 0;
     flex: auto;
   }

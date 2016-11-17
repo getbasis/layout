@@ -27,9 +27,9 @@ The header fixed to top and the contents is under the header.
 
 ### HTML
 ```
-<div class="_l-container" data-bs-layout="container">
-  <header class="_l-header" data-bs-layout="header" data-bs-header-layout="sticky"></header>
-  <div class="_l-contents" data-bs-layout="contents"></div>
+<div class="_l-container" data-l="container">
+  <header class="_l-header" data-l="header" data-l-header-type="sticky"></header>
+  <div class="_l-contents" data-l="contents"></div>
 </div>
 ```
 
@@ -45,9 +45,9 @@ The header fixed to top and overlay the contents.
 
 ### HTML
 ```
-<div class="_l-container" data-bs-layout="container">
-  <header class="_l-header" data-bs-layout="header" data-bs-header-layout="overlay"></header>
-  <div class="_l-contents" data-bs-layout="contents"></div>
+<div class="_l-container" data-l="container">
+  <header class="_l-header" data-l="header" data-l-header-type="overlay"></header>
+  <div class="_l-contents" data-l="contents"></div>
 </div>
 ```
 
@@ -63,10 +63,12 @@ The footer fixed to bottom when the contents is smaller than the height of the w
 
 ### HTML
 ```
-<div class="_l-container" data-bs-layout="container" data-bs-container-layout="sticky-footer">
-  <header class="_l-header" data-bs-layout="header"></header>
-  <div class="_l-contents" data-bs-layout="contents"></div>
-</div>
+<html data-sticky-footer="true">
+  <div class="_l-container" data-l="container">
+    <header class="_l-header" data-l="header"></header>
+    <div class="_l-contents" data-l="contents"></div>
+  </div>
+</html>
 ```
 
 ## Using disable window scroll
@@ -75,10 +77,10 @@ Scroll the contents of the page instead of scrolling the window.
 
 ### HTML
 ```
-<html data-bs-disable-window-scroll="true">
-  <div class="_l-container" data-bs-layout="container">
-    <header class="_l-header" data-bs-layout="header"></header>
-    <div class="_l-contents" data-bs-layout="contents"></div>
+<html data-window-scroll="false">
+  <div class="_l-container" data-l="container">
+    <header class="_l-header" data-l="header"></header>
+    <div class="_l-contents" data-l="contents"></div>
   </div>
 </html>
 ```
