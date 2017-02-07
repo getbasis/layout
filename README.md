@@ -6,19 +6,19 @@ This is a css module for the Basis.
 
 ## Basis
 * Repository: https://github.com/getbasis/basis/
-* Documents : http://getbasis.github.io/
+* Documents : https://getbasis.github.io/
 
 ## Get Started
 ### Install
 ```
-$ npm install getbasis
-$ npm install getbasis-layout
+$ yarn add getbasis
+$ yarn add getbasis-layout
 ```
 
 ### Stylus
 ```
-@import 'node_modules/getbasis-layout/src/stylus/basis';
-@import 'node_modules/getbasis-layout/src/stylus/layout/container';
+@import 'node_modules/getbasis-layout/src/css/basis';
+@import 'node_modules/getbasis-layout/src/css/layout/container';
 ```
 
 ## Using sticky header
